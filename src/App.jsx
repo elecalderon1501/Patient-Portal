@@ -1,6 +1,6 @@
 import Header from './components/Header'
-import Formulario from './components/Formulario'
-import ListadoPacientes from './components/ListadoPacientes'
+import Form from './components/Form'
+import PatientList from './components/PatientList'
 
 function App() {
   return (
@@ -8,8 +8,8 @@ function App() {
       <Header />
       <div className='mt-12 md:flex'> 
       {/* md->mediaquery */}
-      <Formulario />
-      <ListadoPacientes />
+      <Form />
+      <PatientList />
       </div>
     </div>
   )
