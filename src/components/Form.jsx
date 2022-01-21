@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
+import Error from './Error'
 
-const Form = ({setPacientes}) => {
+const Form = ({ pacientes, setPacientes }) => {
   const [name, setName] = useState('')
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
@@ -15,7 +16,24 @@ const Form = ({setPacientes}) => {
       setError('true')
       return
     }
+
     setError(false)
+
+    const objetoPaciente = {
+      name,
+      lastName,
+      email,
+      date,
+      sintomas,
+    }
+    setPacientes([...pacientes, objetoPaciente])
+
+    //reinicio form
+    setName('')
+    setLastName('')
+    setEmail('')
+    setDate('')
+    setSintomas('')
   }
 
   return (
@@ -30,11 +48,9 @@ const Form = ({setPacientes}) => {
         onSubmit={handleSubmit}
         className="bg-white shadow-md rounded-lg py-10 px-5 mb-10"
       >
-        {error && (
-          <div className="bg-red-800 text-white text-center p-3 uppercase font-bold mb-3 rounded-md">
-            <p>Error</p>
-          </div>
-        )}
+        {error && <Error />}
+
+        
         <div className="mb-5">
           <label
             htmlFor="Name"

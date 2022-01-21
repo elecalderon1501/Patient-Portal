@@ -12,6 +12,7 @@ function App() {
       <div className='mt-12 md:flex'> 
       {/* md->mediaquery */}
       <Form
+      pacientes={pacientes}
       setPacientes={setPacientes} />
       <PatientList />
       </div>
