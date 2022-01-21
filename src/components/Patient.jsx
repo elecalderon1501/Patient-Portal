@@ -2,24 +2,24 @@
 const Patient = () => {
   return (
     
-      <div className="m-3 bg-white shadow-md px-5 py-10 rounded-xl">
+      <div className="mx-5 bg-white shadow-md px-5 py-10 rounded-xl">
         <p className="font-bold mb-3 text-gray-700 uppercase">
-          Name: <span className="front-normal normal-case"> Your name</span>
+          Nombre: <span className="front-normal normal-case"> Tu nombre</span>
         </p>
       
         <p className="font-bold mb-3 text-gray-700 uppercase">
-          Last Name:{' '}
-          <span className="front-normal normal-case"> Your last name</span>
+          Apellido:{' '}
+          <span className="front-normal normal-case"> Tu apellido</span>
         </p>
         <p className="font-bold mb-3 text-gray-700 uppercase">
-          Email: <span className="front-normal normal-case"> Your email</span>
+          Email: <span className="front-normal normal-case"> Tu email</span>
         </p>
         <p className="font-bold mb-3 text-gray-700 uppercase">
-          Discharge Date:{' '}
+          Fecha Alta:{' '}
           <span className="front-normal normal-case"> dd/mm/yyyy</span>
         </p>
         <p className="font-bold mb-3 text-gray-700 uppercase">
-          Symptom:{' '}
+          Sintomas:{' '}
           <span className="front-normal normal-case">
             {' '}
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque
