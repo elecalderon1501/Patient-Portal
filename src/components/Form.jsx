@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Error from './Error'
 
-const Form = ({ pacientes, setPacientes }) => {
+const Form = ({ pacientes, setPacientes, paciente }) => {
   const [name, setName] = useState('')
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
@@ -9,24 +9,33 @@ const Form = ({ pacientes, setPacientes }) => {
   const [sintomas, setSintomas] = useState('')
   const [error, setError] = useState('false')
 
-  const handleSubmit = e => {
+  
+//-------------------------------------------------------------
+  const generarId = () => {
+    const random = Math.random().toString(36).substring(2);
+    const fecha = Date.now().toString(36)
+
+    return random + fecha
+  }
+//-------------------------------------------------------------
+  const handleSubmit = (e) => {
     e.preventDefault()
     //VALIDACION
     if ([name, lastName, email, date, sintomas].includes('')) {
       setError('true')
       return
     }
-
     setError(false)
 
-    const objetoPaciente = {
+    const objectoPaciente = {
       name,
       lastName,
       email,
       date,
       sintomas,
+      id: generarId()
     }
-    setPacientes([...pacientes, objetoPaciente])
+    setPacientes([...pacientes, objectoPaciente])
 
     //reinicio form
     setName('')
