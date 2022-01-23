@@ -1,41 +1,63 @@
 import React, { useState, useEffect } from 'react'
 import Error from './Error'
 
-const Form = ({ pacientes, setPacientes, paciente }) => {
+const Form = ({ pacientes, setPacientes, paciente, setPaciente }) => {
   const [name, setName] = useState('')
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
   const [date, setDate] = useState('')
   const [sintomas, setSintomas] = useState('')
+
   const [error, setError] = useState('false')
 
-  
-//-------------------------------------------------------------
+  useEffect(() => {
+    if (Object.keys(paciente).length > 0) {
+      setName(paciente.name)
+      setLastName(paciente.lastName)
+      setEmail(paciente.email)
+      setDate(paciente.date)
+      setSintomas(paciente.sintomas)
+    }
+  }, [paciente])
+  // esto llevaria los datos de nuevo al formulario para poder editar
+  //-------------------------------------------------------------
   const generarId = () => {
-    const random = Math.random().toString(36).substring(2);
+    const random = Math.random().toString(36).substring(2)
     const fecha = Date.now().toString(36)
 
     return random + fecha
   }
-//-------------------------------------------------------------
+  //-------------------------------------------------------------
   const handleSubmit = (e) => {
     e.preventDefault()
     //VALIDACION
     if ([name, lastName, email, date, sintomas].includes('')) {
-      setError('true')
-      return
+      setError(true)
+      return;
     }
     setError(false)
-
+  
     const objectoPaciente = {
       name,
       lastName,
       email,
       date,
       sintomas,
-      id: generarId()
+      // id: generarId()
     }
-    setPacientes([...pacientes, objectoPaciente])
+
+    if (paciente.id) {
+      //editando el registro
+      objectoPaciente.id = paciente.id
+      const pacientesActualizados = pacientes.map(pacienteState =>
+        pacienteState.id === paciente.id ? objectoPaciente : pacienteState
+      )
+      setPacientes(pacientesActualizados)
+      setPaciente({})
+    } else {
+      objectoPaciente.id = generarId()
+      setPacientes([...pacientes, objectoPaciente])
+    }
 
     //reinicio form
     setName('')
@@ -59,7 +81,6 @@ const Form = ({ pacientes, setPacientes, paciente }) => {
       >
         {error && <Error />}
 
-        
         <div className="mb-5">
           <label
             htmlFor="Name"
@@ -142,12 +163,14 @@ const Form = ({ pacientes, setPacientes, paciente }) => {
         </div>
         <input
           type="submit"
-          className="bg-indigo-600 w-full p-3 text-white uppercase font-bold hover:bg-indigo-800 cursor-pointer transition-all "
-          value="Agregar paciente"
+          className="bg-indigo-600 w-full p-3 text-white uppercase font-bold hover:bg-indigo-800 cursor-pointer transition-colors "
+          value={paciente.id ? 'Editar Paciente' : 'Agregar Paciente'}
+
         />
       </form>
     </div>
   )
-}
+  }
+
 
 export default Form
