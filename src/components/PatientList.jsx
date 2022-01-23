@@ -4,15 +4,12 @@ import Patient from './Patient'
 const PatientList = ({ pacientes, setPaciente, eliminarPaciente }) => {
   // console.log(patients)
   return (
-    <div className="md:w-1/2 lg:w-3/5 md:h-screen overflow-y-scroll">
+    <div className="md:w-1/2 lg:w-3/5 md:h-screen overflow-y-scroll bg-slate-400 rounded-lg">
       {/* overflow-y-scroll--> me genera un scroll en la parte de las card patient  md->toma todo el ancho disponible*/}
       {pacientes && pacientes.length ? (
         <>
-          <h2 className="font-black text-3xl text-center">Lista Pacientes</h2>
-          <p className="text-xl mt-5 mb-10 text-center">
-            Admnistra{' '}
-            <span className="text-indigo-600 font-bold">tus pacientes</span>
-          </p>
+          <h2 className="font-black text-3xl text-center mb-5 text-sky-300 drop-shadow-lg ">Lista Pacientes</h2>
+          
           {pacientes.map(paciente => (
             <Patient
               key={paciente.id}
@@ -24,8 +21,8 @@ const PatientList = ({ pacientes, setPaciente, eliminarPaciente }) => {
         </>
       ) : (
         <>
-          <h2 className="font-black text-3xl text-center">NO HAY PACIENTES</h2>
-          <p className="text-xl mt-5 mb-10 text-center">Agrega pacientes. </p>
+          <h2 className="font-black text-3xl text-center text-red-600 mt-10 ">NO HAY PACIENTES</h2>
+          
         </>
       )}
     </div>

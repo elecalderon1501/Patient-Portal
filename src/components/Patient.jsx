@@ -36,10 +36,10 @@ const handleEliminar = () =>{
           </span>
         </p>
         <div>
-          <button type="button" className="py-2 px-10 bg-indigo-600 hover:bg-indigo-700 text-white font-bold uppercase rounded-lg"
+          <button type="button" className="py-2 px-10 bg-sky-600 drop-shadow-lg hover:bg-sky-700 text-white font-bold uppercase rounded-lg"
           onClick={() => setPaciente(paciente)}> Editar          
           </button>
-          <button type="button" className="py-2 px-10 ml-20 bg-red-600 hover:bg-red-700 text-white font-bold uppercase rounded-lg" 
+          <button type="button" className="py-2 px-10 ml-20 drop-shadow-lg bg-red-500 hover:bg-red-600 text-white font-bold uppercase rounded-lg" 
           onClick={handleEliminar}> Eliminar
           </button>
         </div>

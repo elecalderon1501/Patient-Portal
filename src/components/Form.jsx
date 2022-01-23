@@ -8,7 +8,7 @@ const Form = ({ pacientes, setPacientes, paciente, setPaciente }) => {
   const [date, setDate] = useState('')
   const [sintomas, setSintomas] = useState('')
 
-  const [error, setError] = useState('false')
+  const [error, setError] = useState('')
 
   useEffect(() => {
     if (Object.keys(paciente).length > 0) {
@@ -69,15 +69,11 @@ const Form = ({ pacientes, setPacientes, paciente, setPaciente }) => {
 
   return (
     <div className="md:w-1/2 lg:w-2/5 mx-5">
-      <h2 className="font-black text-3xl text-center">Pacientes</h2>
-      <p className="text-lg mt-5 text-center mb-10">
-        Agregar pacientes <br />
-        <span className="text-indigo-600 font-bold ">Administrarlos</span>
-      </p>
-
+      <h2 className="font-black text-3xl text-center mb-5 text-sky-700 drop-shadow-lg ">Agregar pacientes</h2>
+      
       <form
         onSubmit={handleSubmit}
-        className="bg-white shadow-md rounded-lg py-10 px-5 mb-10"
+        className="bg-slate-400 shadow-md rounded-lg py-10 px-5 mb-10"
       >
         {error && <Error />}
 
@@ -92,7 +88,7 @@ const Form = ({ pacientes, setPacientes, paciente, setPaciente }) => {
             id="Nombre"
             type="text"
             placeholder="Nombre"
-            className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-mg"
+            className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-mg drop-shadow-lg "
             value={name}
             onChange={e => setName(e.target.value)}
           />
@@ -108,7 +104,7 @@ const Form = ({ pacientes, setPacientes, paciente, setPaciente }) => {
             id="Apellido"
             type="text"
             placeholder="Apellido"
-            className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-mg"
+            className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-mg drop-shadow-lg"
             value={lastName}
             onChange={e => setLastName(e.target.value)}
           />
@@ -125,7 +121,7 @@ const Form = ({ pacientes, setPacientes, paciente, setPaciente }) => {
             id="email"
             type="email"
             placeholder="Email"
-            className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-mg"
+            className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-mg drop-shadow-lg"
             value={email}
             onChange={e => setEmail(e.target.value)}
           />
@@ -140,7 +136,7 @@ const Form = ({ pacientes, setPacientes, paciente, setPaciente }) => {
           <input
             id="fecha-alta"
             type="date"
-            className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-mg"
+            className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-mg drop-shadow-lg"
             value={date}
             onChange={e => setDate(e.target.value)}
           />
@@ -155,7 +151,7 @@ const Form = ({ pacientes, setPacientes, paciente, setPaciente }) => {
           <textarea
             name=""
             id="sintomas"
-            className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-mg"
+            className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-mg drop-shadow-lg"
             placeholder="Describe the symptoms"
             value={sintomas}
             onChange={e => setSintomas(e.target.value)}
@@ -163,7 +159,7 @@ const Form = ({ pacientes, setPacientes, paciente, setPaciente }) => {
         </div>
         <input
           type="submit"
-          className="bg-indigo-600 w-full p-3 text-white uppercase font-bold hover:bg-indigo-800 cursor-pointer transition-colors "
+          className="bg-sky-600 rounded-lg w-full p-3 text-white uppercase font-bold hover:bg-sky-800 cursor-pointer transition-colors "
           value={paciente.id ? 'Editar Paciente' : 'Agregar Paciente'}
 
         />
